@@ -120,7 +120,7 @@ sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.025ukii"|g' $HOME/.kiic
 
 ```
 SEEDS=""
-PEERS="5b6aa55124c0fd28e47d7da091a69973964a9fe1@uno.sentry.testnet.v3.kiivalidator.com:26656,5e6b283c8879e8d1b0866bda20949f9886aff967@dos.sentry.testnet.v3.kiivalidator.com:56,0fe12600961ab22df47e433418403ea5d492dcd7@172.31.10.28:26656,83cf42529a500abe37fc6e6b65573cf038ea287d@172.31.1.237:26656,c536be69fd73a0502130b0c1bcd2325dbc7a397f@88.99.137.138:31656,d43b641c1b41c8379fb5efe7816401c6f658cf7d@162.55.97.180:31656,547dd169fc108735dd7565ccdbf6a63b6e39dbb9@135.181.178.120:31656,c541892972a552bdb6402ae6e2a4d9812021f39c@88.99.162.99:19656,3b789bd4719557b8ced71c0fac385bcd2340468c@116.203.230.244:26656"
+PEERS="5b6aa55124c0fd28e47d7da091a69973964a9fe1@uno.sentry.testnet.v3.kiivalidator.com:26656,5e6b283c8879e8d1b0866bda20949f9886aff967@dos.sentry.testnet.v3.kiivalidator.com:26656"
 sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*seeds *=.*/seeds = \"$SEEDS\"/}" \
        -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" $HOME/.kiichain3/config/config.toml
 ```
