@@ -104,6 +104,44 @@ sudo systemctl enable kiichaind
 kiichaind init "isim-yaz" --chain-id kiichain3
 ```
 
+### 🚧 Port ayarı (İsteğe bağlı)
+
+#### Port numarasını özelleştirmek isterseniz:
+
+```
+echo "export KIICHAIN_PORT="17"" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+```
+
+#### App toml port ayarları
+
+```
+sed -i.bak -e "s%:1317%:${KIICHAIN_PORT}317%g;
+s%:8080%:${KIICHAIN_PORT}080%g;
+s%:9090%:${KIICHAIN_PORT}090%g;
+s%:9091%:${KIICHAIN_PORT}091%g;
+s%:8545%:${KIICHAIN_PORT}545%g;
+s%:8546%:${KIICHAIN_PORT}546%g;
+s%:6065%:${KIICHAIN_PORT}065%g" $HOME/.kiichain3/config/app.toml
+```
+
+#### Config toml port ayarları
+
+```
+sed -i.bak -e "s%:26658%:${KIICHAIN_PORT}658%g;
+s%:26657%:${KIICHAIN_PORT}657%g;
+s%:6060%:${KIICHAIN_PORT}060%g;
+s%:26656%:${KIICHAIN_PORT}656%g;
+s%^external_address = \"\"%external_address = \"$(wget -qO- eth0.me):${KIICHAIN_PORT}656\"%;
+s%:26660%:${KIICHAIN_PORT}660%g" $HOME/.kiichain3/config/config.toml
+```
+
+#### Client toml port ayarları
+
+```
+sed -i -e "s|^node *=.*|node = \"tcp://localhost:${KIICHAIN_PORT}657\"|" $HOME/.kiichain3/config/client.toml
+```
+
 ### 🚧 Genesis
 
 ```
@@ -165,44 +203,6 @@ if curl -s --head curl URL | head -n 1 | grep "200" > /dev/null; then
 else
   echo "Snapshot bulunamadı"
 fi
-```
-
-### 🚧 Port ayarı (İsteğe bağlı)
-
-#### Port numarasını özelleştirmek isterseniz:
-
-```
-echo "export KIICHAIN_PORT="17"" >> $HOME/.bash_profile
-source $HOME/.bash_profile
-```
-
-#### App toml port ayarları
-
-```
-sed -i.bak -e "s%:1317%:${KIICHAIN_PORT}317%g;
-s%:8080%:${KIICHAIN_PORT}080%g;
-s%:9090%:${KIICHAIN_PORT}090%g;
-s%:9091%:${KIICHAIN_PORT}091%g;
-s%:8545%:${KIICHAIN_PORT}545%g;
-s%:8546%:${KIICHAIN_PORT}546%g;
-s%:6065%:${KIICHAIN_PORT}065%g" $HOME/.kiichain3/config/app.toml
-```
-
-#### Config toml port ayarları
-
-```
-sed -i.bak -e "s%:26658%:${KIICHAIN_PORT}658%g;
-s%:26657%:${KIICHAIN_PORT}657%g;
-s%:6060%:${KIICHAIN_PORT}060%g;
-s%:26656%:${KIICHAIN_PORT}656%g;
-s%^external_address = \"\"%external_address = \"$(wget -qO- eth0.me):${KIICHAIN_PORT}656\"%;
-s%:26660%:${KIICHAIN_PORT}660%g" $HOME/.kiichain3/config/config.toml
-```
-
-#### Client toml port ayarları
-
-```
-sed -i -e "s|^node *=.*|node = \"tcp://localhost:${KIICHAIN_PORT}657\"|" $HOME/.kiichain3/config/client.toml
 ```
 
 
