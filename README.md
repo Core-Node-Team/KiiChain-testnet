@@ -120,7 +120,7 @@ sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.025ukii"|g' $HOME/.kiic
 
 ```
 SEEDS=""
-PEERS="5b6aa55124c0fd28e47d7da091a69973964a9fe1@uno.sentry.testnet.v3.kiivalidator.com:26656,5e6b283c8879e8d1b0866bda20949f9886aff967@dos.sentry.testnet.v3.kiivalidator.com:26656"
+PEERS="c541892972a552bdb6402ae6e2a4d9812021f39c@88.99.162.99:19656,5b6aa55124c0fd28e47d7da091a69973964a9fe1@uno.sentry.testnet.v3.kiivalidator.com:26656,5e6b283c8879e8d1b0866bda20949f9886aff967@dos.sentry.testnet.v3.kiivalidator.com:26656"
 sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*seeds *=.*/seeds = \"$SEEDS\"/}" \
        -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" $HOME/.kiichain3/config/config.toml
 ```
@@ -171,8 +171,8 @@ fi
 
 ```
 kiichaind tendermint unsafe-reset-all --home $HOME/.kiichain3
-PRIMARY_ENDPOINT=https://rpc.uno.sentry.testnet.v3.kiivalidator.com
-SECONDARY_ENDPOINT=https://rpc.dos.sentry.testnet.v3.kiivalidator.com
+PRIMARY_ENDPOINT=https://rpc-kiichain.vinjan.xyz
+SECONDARY_ENDPOINT=https://rpc.uno.sentry.testnet.v3.kiivalidator.com
 TRUST_HEIGHT_DELTA=500
 LATEST_HEIGHT=$(curl -s "$PRIMARY_ENDPOINT"/block | jq -r ".block.header.height")
 if [[ "$LATEST_HEIGHT" -gt "$TRUST_HEIGHT_DELTA" ]]; then
