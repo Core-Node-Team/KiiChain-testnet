@@ -170,6 +170,7 @@ fi
 ### 🚧 State-sync ayarları (hızlı sync için)
 
 ```
+kiichaind tendermint unsafe-reset-all --home $HOME/.kiichain3
 PRIMARY_ENDPOINT=https://rpc.uno.sentry.testnet.v3.kiivalidator.com
 SECONDARY_ENDPOINT=https://rpc.dos.sentry.testnet.v3.kiivalidator.com
 TRUST_HEIGHT_DELTA=500
