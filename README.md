@@ -125,6 +125,11 @@ s%:8546%:${KIICHAIN_PORT}546%g;
 s%:6065%:${KIICHAIN_PORT}065%g" $HOME/.kiichain3/config/app.toml
 ```
 
+```
+sed -i -e "s|http_port = 8545|http_port = ${KIICHAIN_PORT}545|g; 
+s|ws_port = 8546|ws_port = ${KIICHAIN_PORT}546|g" $HOME/.kiichain3/config/app.toml
+```
+
 #### Config toml port ayarları
 
 ```
