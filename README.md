@@ -232,7 +232,7 @@ NOT: Faucet için [Discord](https://discord.gg/kiichain) kanalını ziyaret edin
 
 ```
 kiichaind tx staking create-validator \
-  --from walletname \
+  --from cüzdan-adi \
   --chain-id kiichain3 \
   --pubkey "$(kiichaind tendermint show-validator)" \
   --amount "1000000ukii" \
@@ -252,7 +252,7 @@ kiichaind tx staking create-validator \
 ### 🚧 Delege
 
 ```
-kiichaind tx staking delegate valoper-adresi 1000000ukii \
+kiichaind tx staking delegate $(kiichaind keys show cüzdan-adi --bech val -a) 1000000ukii \
     --chain-id kiichain3 \
     --from "cüzdan-adi" \
     --gas auto --gas-adjustment 1.5 --gas-prices 0.025ukii
