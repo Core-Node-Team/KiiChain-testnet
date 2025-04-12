@@ -145,7 +145,7 @@ sed -i -e "s|^node *=.*|node = \"tcp://localhost:${KIICHAIN_PORT}657\"|" $HOME/.
 ### 🚧 Genesis
 
 ```
-wget https://raw.githubusercontent.com/KiiChain/testnets/refs/heads/main/testnet_oro/genesis.json -O $HOME/.kiichain3/config/genesis.json
+wget https://raw.githubusercontent.com/Core-Node-Team/KiiChain-testnet/refs/heads/main/genesis.json -O $HOME/.kiichain3/config/genesis.json
 ```
 
 ### 🚧 Minimum gas price ayarı
