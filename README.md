@@ -251,34 +251,25 @@ kiichaind keys add cüzdan-adi --recover
 
 NOT: Faucet için [Discord](https://discord.gg/kiichain) kanalını ziyaret edin
 
-```
-cd $HOME
-```
-
-#### validator.json dosyası oluştur
+#### validator dosyası oluştur
 
 ```
-echo ""{\"pubkey\":{\"@type\":\"/cosmos.crypto.ed25519.PubKey\",\"key\":\"$(kiichaind tendermint show-validator | grep -Po '\"key\":\s*\"\K[^"]*')\"},
-    \"amount\": \"1000000ukii\",
-    \"moniker\": \"nodeismin\",
-    \"identity\": \"keybasecode\",
-    \"website\": \"\",
-    \"security\": \"\",
-    \"details\": \"details\",
-    \"commission-rate\": \"0.1\",
-    \"commission-max-rate\": \"0.2\",
-    \"commission-max-change-rate\": \"0.01\",
-    \"min-self-delegation\": \"1\"
-}" > validator.json
-```
-
-#### JSON yapılandırmasını kullanarak validator oluştur
-
-```
-kiichaind tx staking create-validator validator.json \
-    --from cuzdanismin \
-    --chain-id kiichain3 \
-    --gas auto --gas-adjustment 1.5 --gas-prices 0.025ukii
+kiichaind tx staking create-validator \
+  --from walletname \
+  --chain-id kiichain3 \
+  --pubkey "$(kiichaind tendermint show-validator)" \
+  --amount "1000000ukii" \
+  --moniker "nodename" \
+  --identity "" \
+  --website "" \
+  --details "details" \
+  --commission-rate "0.1" \
+  --commission-max-rate "0.2" \
+  --commission-max-change-rate "0.01" \
+  --min-self-delegation "1" \
+  --gas auto \
+  --gas-adjustment 1.5 \
+  --gas-prices 0.025ukii
 ```
 
 ### 🚧 Delege
