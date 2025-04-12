@@ -231,9 +231,8 @@ kiichaind keys add cüzdan-adi --recover
 
 ### 🚧 Validator oluşturma
 
-NOT: Faucet için [Discord](https://discord.gg/y3MTxntHAd) kanalını ziyaret edin
-
-#### validator dosyası oluştur
+NOT: Faucet için [Discord](https://discord.gg/y3MTxntHAd)
+[Siteden](https://explorer.kiichain.io/faucet)
 
 ```
 kiichaind tx staking create-validator \
