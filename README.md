@@ -226,7 +226,7 @@ kiichaind keys add cüzdan-adi --recover
 
 ### 🚧 Validator oluşturma
 
-NOT: Faucet için [Discord](https://discord.gg/kiichain) kanalını ziyaret edin
+NOT: Faucet için [Discord](https://discord.gg/y3MTxntHAd) kanalını ziyaret edin
 
 #### validator dosyası oluştur
 
