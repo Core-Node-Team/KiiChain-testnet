@@ -194,7 +194,7 @@ sed -i -e "s|^ss-enable *=.*|ss-enable = true|" $HOME/.kiichain3/config/app.toml
 sed -i -e 's/^# concurrency-workers = 20$/concurrency-workers = 500/' $HOME/.kiichain3/config/app.toml
 ```
 
-### 🚧 Snapshot (Şuan yok-state sync deneyebilirsin)
+### 🚧 Snapshot
 
 ```
 kiichaind tendermint unsafe-reset-all --home $HOME/.kiichain3
@@ -204,29 +204,6 @@ else
   echo "Snapshot bulunamadı"
 fi
 ```
-
-
-### 🚧 State-sync ile başlat (hızlı sync için)
-
-```
-PERSISTENT_PEERS="c541892972a552bdb6402ae6e2a4d9812021f39c@88.99.162.99:19656,5b6aa55124c0fd28e47d7da091a69973964a9fe1@uno.sentry.testnet.v3.kiivalidator.com:26656,5e6b283c8879e8d1b0866bda20949f9886aff967@dos.sentry.testnet.v3.kiivalidator.com:26656"
-PRIMARY_ENDPOINT=https://rpc.uno.sentry.testnet.v3.kiivalidator.com
-SECONDARY_ENDPOINT=https://rpc.dos.sentry.testnet.v3.kiivalidator.com
-sed -i -e "/persistent-peers =/ s^= .*^= \"$PERSISTENT_PEERS\"^" $HOME/.kiichain3/config/config.toml
-TRUST_HEIGHT_DELTA=500
-LATEST_HEIGHT=$(curl -s "$PRIMARY_ENDPOINT"/block | jq -r ".block.header.height")
-SYNC_BLOCK_HEIGHT=$(($LATEST_HEIGHT - $TRUST_HEIGHT_DELTA))
-SYNC_BLOCK_HEIGHT=$LATEST_HEIGHT
-SYNC_BLOCK_HASH=$(curl -s "$PRIMARY_ENDPOINT/block?height=$SYNC_BLOCK_HEIGHT" | jq -r ".block_id.hash")
-sed -i.bak -e "s|^enable *=.*|enable = true|" $HOME/.kiichain3/config/config.toml
-sed -i.bak -e "s|^rpc-servers *=.*|rpc-servers = \"$PRIMARY_ENDPOINT,$SECONDARY_ENDPOINT\"|" $HOME/.kiichain3/config/config.toml
-sed -i.bak -e "s|^db-sync-enable *=.*|db-sync-enable = false|" $HOME/.kiichain3/config/config.toml
-sed -i.bak -e "s|^trust-height *=.*|trust-height = $SYNC_BLOCK_HEIGHT|" $HOME/.kiichain3/config/config.toml
-sed -i.bak -e "s|^trust-hash *=.*|trust-hash = \"$SYNC_BLOCK_HASH\"|" $HOME/.kiichain3/config/config.toml
-sudo systemctl restart kiichaind
-sudo journalctl -u kiichaind -f -o cat
-```
-
 
 ### 🚧 Başlatalım
 
