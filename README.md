@@ -229,6 +229,12 @@ kiichaind keys add cüzdan-adi
 kiichaind keys add cüzdan-adi --recover
 ```
 
+### 🚧 Cüzdan adreslerini öğrenme
+
+```
+kiichaind keys list
+```
+
 ### 🚧 Validator oluşturma
 
 NOT: Faucet için [Discord](https://discord.gg/y3MTxntHAd)
