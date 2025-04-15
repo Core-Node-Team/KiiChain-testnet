@@ -235,11 +235,6 @@ kiichaind keys add cüzdan-adi --recover
 kiichaind keys list
 ```
 
-### cüzdan evm öğrenme
-NOT: wallet adınız neyse değiştirmeniz gerekebilir benimki wallet tı wallet kaldı :D
-```
-echo "0x$(kiichaind debug addr $(kiichaind keys show wallet -a) | grep hex | awk '{print $3}')"
-```
 ### 🚧 Validator oluşturma
 
 NOT: Faucet için [Discord](https://discord.gg/y3MTxntHAd)
